@@ -14,7 +14,7 @@ const AddEdit = () => {
 
 const navigate = useNavigate();
 
-const [state,setState] = useState(initialState);
+const [setState] = useState(initialState);
 
 const [task,setTask]=useState('');     
 const [ls_date,setLs_date]=useState('');
@@ -24,7 +24,7 @@ const handleSubmit = (e) => {
 	if(!task || !ls_date){
 	toast.error("Please provide value into each input field");
 	}else{
-	axios.post(`http://localhost:5000/api/post`,{
+	axios.post(`http://3.110.45.96:5000/api/post`,{
 	task,
 	ls_date
 	}).then(() => {

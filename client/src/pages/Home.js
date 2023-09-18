@@ -8,8 +8,10 @@ const Home = () => {
 
 const [data,setData] = useState([]);
 
+//let dataArr = Array.from(data);
+
 const loadData = async () => {
-	const response = await axios.get("http://localhost:5000/api/get");
+	const response = await axios.get("http://3.110.45.96:5000/api/get");
 	setData(response.data);
 };
 
@@ -18,11 +20,11 @@ loadData();},[]);
 
 const deleteTask = (task) => {
 	if(window.confirm("Are you sure you wanted to delete that task ? ")){
-		axios.delete(`http://localhost:5000/api/remove/${task}`);
-		toast.success("Contact Deleted Successfully");
+		axios.delete(`http://3.110.45.96:5000/api/remove/${task}`);
+		toast.success("Task Deleted Successfully");
 		setTimeout(() => loadData(),500);
-	}
-}
+	};
+};
 
 return(
 <div style={{marginTop: "150px"}}>
@@ -56,6 +58,6 @@ return(
 
 </div>
 )
-}
+};
 
 export default Home

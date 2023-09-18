@@ -5,15 +5,15 @@ const mysql = require("mysql2");
 const cors = require("cors");
 
 const db = mysql.createPool({
-	host: "localhost",
-	user: "root",
-	password: "Ujjwal@mysql3",
-	database: "todolist"
+	host: 'mysql_db',
+	user: 'ujjwal',
+	password: 'ujjwal@204',
+	database: 'Tasks'
 });
 
 app.use(cors());
 app.use(express.json());
-//app.use(express.urlencoded({encoded: true}));
+app.use(express.urlencoded({encoded: true}));
 
 app.get("/api/get", (req,res) => {
 	const sqlGet = "SELECT * FROM tasks";

@@ -1,0 +1,14 @@
+FROM node
+
+WORKDIR /app
+
+COPY package.json ./
+COPY package-lock.json ./
+COPY ./ ./
+
+RUN npm i  
+RUN npm i cors express body-parser mysql2
+
+EXPOSE 5000
+
+CMD ["npm","run","server"]
