@@ -24,7 +24,7 @@ const handleSubmit = (e) => {
 	if(!task || !ls_date){
 	toast.error("Please provide value into each input field");
 	}else{
-	axios.post(`http://43.205.207.167:5000/api/post`,{
+	axios.post(`http://35.154.32.215:32500/api/post`,{
 	task,
 	ls_date
 	}).then(() => {

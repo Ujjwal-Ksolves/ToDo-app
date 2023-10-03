@@ -33,7 +33,7 @@ services:
     cap_add:
       - SYS_NICE
     volumes:
-      - ./serverdatabase:/var/lib/mysql
+      - ./data:/var/lib/mysql
     ports:
       - "3306:3306"
     environment:

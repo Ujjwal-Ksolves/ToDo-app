@@ -10,6 +10,8 @@ spec:
     - port: 5000
       targetPort: 5000
       nodePort: 32500
+  externalIPs:
+    - 198.51.100.32
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -30,7 +32,7 @@ spec:
           image: ujjwal200119/todo-app:server7
           env:
             - name: MYSQL_HOST
-              value: mysqlsvc # Service name for MySQL
+              value: 198.51.100.32 # Service name for MySQL
             - name: MYSQL_USER
               value: ujjwal
             - name: MYSQL_PASSWORD

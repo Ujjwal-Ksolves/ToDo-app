@@ -10,8 +10,8 @@ spec:
     - protocol: TCP
       port: 3306
       targetPort: 3306
-#  externalIPs:
-#    - 198.51.100.32
+  externalIPs:
+    - 198.51.100.32
 
 ---
 
