@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: ujjwal200119/todo-app:client-app
+          image: ujjwal200119/todo-app:client-app2
           ports:
             - containerPort: 3000
 
