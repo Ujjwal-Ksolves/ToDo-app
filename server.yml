@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: ujjwal200119/todo-app:app-server
+          image: ujjwal200119/todo-app:server-app
           env:
             - name: MYSQL_HOST
               value: 198.51.100.32 # Service name for MySQL
