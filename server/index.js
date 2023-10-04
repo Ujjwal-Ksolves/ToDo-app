@@ -4,12 +4,21 @@ const bodyParser = require("body-parser");
 const mysql = require("mysql2");
 const cors = require("cors");
 
-const db = mysql.createPool({
-	host: 'mysql_db',
-	user: 'ujjwal',
-	password: 'ujjwal@204',
-	database: 'Tasks'
+const db = mysql.createConnection({
+	host: process.env.MYSQL_HOST,
+	user: process.env.MYSQL_USER,
+	password: process.env.MYSQL_PASSWORD,
+	port: process.env.MYSQL_PORT,
+	database: process.env.MYSQL_DATABASE
 });
+db.connect(function(err) {
+        if (!err) {
+            console.log("mysql connected")
+        } else {
+            console.log(err);
+        }
+});
+
 
 app.use(cors());
 app.use(express.json());
@@ -19,6 +28,9 @@ app.get("/api/get", (req,res) => {
 	const sqlGet = "SELECT * FROM tasks";
 	db.query(sqlGet,(error,result) => {
 		res.send(result);
+		if(error){
+			console.log(error);
+		}
 	});
 });
 
