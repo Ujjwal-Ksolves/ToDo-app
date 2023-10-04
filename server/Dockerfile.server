@@ -6,6 +6,7 @@ COPY package.json ./
 COPY package-lock.json ./
 COPY ./ ./
 
+RUN export VER = 1.0.0
 RUN npm i  
 RUN npm i cors express body-parser mysql2
 
