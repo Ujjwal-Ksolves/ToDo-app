@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: ujjwal200119/todo-app:client-app${version}
+          image: ujjwal200119/todo-app:client-app${BUILD_NUMBER}
           ports:
             - containerPort: 3000
 
