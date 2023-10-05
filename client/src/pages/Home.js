@@ -27,7 +27,7 @@ const deleteTask = (task) => {
 };
 
 return(
-<div style={{marginTop: "150px"}}>
+<div style={{marginTop: "150px", backgroundColor: 'blue'}}>
 <Link to="/addTask">
 <button className="btn btn-add">Add Your Tasks</button>
 </Link>
