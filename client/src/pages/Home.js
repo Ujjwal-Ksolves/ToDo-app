@@ -29,7 +29,7 @@ const deleteTask = (task) => {
 return(
 <div style={{marginTop: "150px"}}>
 <Link to="/addTask">
-<button className="btn btn-add">Add Your Tasks</button>
+<button className="btn btn-add">Add Tasks</button>
 </Link>
 <table className="styled-table">
 <thead>
