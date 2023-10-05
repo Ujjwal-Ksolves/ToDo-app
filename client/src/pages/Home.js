@@ -11,7 +11,7 @@ const [data,setData] = useState([]);
 //let dataArr = Array.from(data);
 
 const loadData = async () => {
-	const response = await axios.get(`http://3.110.160.249:32500/api/get`);
+	const response = await axios.get(`http://172.31.45.113:32500/api/get`);
 	setData(response.data);
 };
 
@@ -20,7 +20,7 @@ loadData();},[]);
 
 const deleteTask = (task) => {
 	if(window.confirm("Are you sure you wanted to delete that task ? ")){
-		axios.delete(`http://3.110.160.249:32500/api/remove/${task}`);
+		axios.delete(`http://172.31.45.113:32500/api/remove/${task}`);
 		toast.success("Task Deleted Successfully");
 		setTimeout(() => loadData(),500);
 	};
