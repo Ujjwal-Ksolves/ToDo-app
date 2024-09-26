@@ -1,0 +1,57 @@
+version: "2.21"
+
+services:
+  client:
+    container_name: react_ui
+    build:
+      dockerfile: Dockerfile.client
+      context: "./client"
+    ports:
+      - 3000:3000
+    depends_on:
+      - server
+
+  server:
+    container_name: node_api
+    build:
+      dockerfile: Dockerfile.server
+      context: "./server"
+    ports:
+      - 5000:5000
+    depends_on:
+      - mysql_db
+    environment:
+      MYSQL_HOST_IP: mysql_db
+      MYSQL_USER: ujjwal
+      MYSQL_PASSWORD: ujjwal@204
+      MYSQL_DATABASE: Tasks
+
+  mysql_db:
+    container_name: mysql_db
+    image: mysql
+    restart: always
+    cap_add:
+      - SYS_NICE
+    volumes:
+      - ./data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: Tasks
+      MYSQL_USER: ujjwal
+      MYSQL_PASSWORD: ujjwal@204
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+      MYSQL_ROOT_PASSWORD: ujjwal@root1
+      MYSQL_HOST: localhost
+
+  nginx:
+    container_name: nginx
+    build: 
+      dockerfile: Dockerfile.nginx
+      context: "./nginx"
+    restart: always
+    depends_on:
+      - server
+      - client
+    ports:
+      - 80:80  

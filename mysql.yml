@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysqlsvc
+spec:
+  #clusterIP: None
+  selector:
+    app: mysql-app
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+  externalIPs:
+    - 198.51.100.32
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql-app
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql-app
+    spec:
+      containers:
+        - name: mysql-db
+          image: ujjwal200119/todo-app:mysql
+          env:
+            - name: MYSQL_USER
+              value: ujjwal
+            - name: MYSQL_PASSWORD
+              value: ujjwal@204
+            - name: MYSQL_ALLOW_EMPTY_PASSWORD
+              value: "true"
+            - name: MYSQL_ROOT_PASSWORD
+              value: ujjwal@root1
+            - name: MYSQL_DATABASE
+              value: Tasks
+          ports:
+            - containerPort: 3306
+              name: mysql
+          volumeMounts:
+            - mountPath: "/var/lib/mysql"
+              name: mysql-vol
+      volumes:
+        - name: mysql-vol
+          persistentVolumeClaim:
+            claimName: mysql-pvclaim
+
